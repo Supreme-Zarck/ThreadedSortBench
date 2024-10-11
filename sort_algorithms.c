@@ -157,16 +157,32 @@ int main() {
         return 1;
     }
 
-    fprintf(gnuplotPipe, "set title 'Temps d execution des algorithmes de tri'\n");
+    fprintf(gnuplotPipe, "set title 'Temps dexécution des algorithmes de tri'\n");
     fprintf(gnuplotPipe, "set xlabel 'Taille du tableau'\n");
-    fprintf(gnuplotPipe, "set ylabel 'Temps (secondes)'\n");
+    fprintf(gnuplotPipe, "set ylabel 'Temps dexécution (secondes)'\n");
+
     fprintf(gnuplotPipe, "set logscale xy\n");
-    fprintf(gnuplotPipe, "plot 'execution_times.txt' using 1:2 with lines title 'QuickSort', \\\n");
-    fprintf(gnuplotPipe, "     '' using 1:3 with lines title 'MergeSort', \\\n");
-    fprintf(gnuplotPipe, "     '' using 1:4 with lines title 'HeapSort', \\\n");
-    fprintf(gnuplotPipe, "     '' using 1:5 with lines title 'InsertionSort', \\\n");
-    fprintf(gnuplotPipe, "     '' using 1:6 with lines title 'BubbleSort', \\\n");
-    fprintf(gnuplotPipe, "     '' using 1:7 with lines title 'SelectionSort'\n");
+    fprintf(gnuplotPipe, "set grid xtics ytics\n");
+    fprintf(gnuplotPipe, "set yrange [0.00001:10]\n");
+    fprintf(gnuplotPipe, "set xrange [10:100000]\n");
+    fprintf(gnuplotPipe, "set xtics (10, 100, 1000, 10000,100000)\n");
+    fprintf(gnuplotPipe, "set format x '10^%%L'\n");
+    fprintf(gnuplotPipe, "set ytics (0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10)\n");
+    fprintf(gnuplotPipe, "set format y '%%g'\n");
+
+    fprintf(gnuplotPipe, "set style line 1 lc rgb '#8B0000' lt 1 lw 1 pt 7 ps 0.7\n");
+    fprintf(gnuplotPipe, "set style line 2 lc rgb '#006400' lt 1 lw 1 pt 9 ps 0.7\n");
+    fprintf(gnuplotPipe, "set style line 3 lc rgb '#00008B' lt 1 lw 1 pt 11 ps 0.7\n");
+    fprintf(gnuplotPipe, "set style line 4 lc rgb '#FF8C00' lt 1 lw 1 pt 13 ps 0.7\n");
+    fprintf(gnuplotPipe, "set style line 5 lc rgb '#04508B' lt 1 lw 1 pt 11 ps 0.7\n");
+    fprintf(gnuplotPipe, "set style line 6 lc rgb '#F56C00' lt 1 lw 1 pt 13 ps 0.7\n");
+
+    fprintf(gnuplotPipe, "plot 'execution_times.txt' using 1:2 with lines ls 1 title 'QuickSort', \\\n");
+    fprintf(gnuplotPipe, "     '' using 1:3 with lines ls 2 title 'MergeSort', \\\n");
+    fprintf(gnuplotPipe, "     '' using 1:4 with lines ls 3 title 'HeapSort', \\\n");
+    fprintf(gnuplotPipe, "     '' using 1:5 with lines ls 4 title 'InsertionSort', \\\n");
+    fprintf(gnuplotPipe, "     '' using 1:6 with lines ls 5 title 'BubbleSort', \\\n");
+    fprintf(gnuplotPipe, "     '' using 1:7 with lines ls 6 title 'SelectionSort'\n");
 
 
     
